@@ -2,7 +2,7 @@ pipeline {
   agent any 
 
   parameters {
-    string(name: 'ENV',deafaultValue: 'Dev')
+    string(name: 'ENV',defaultValue: 'Dev')
     choice(name: 'ACTION',choices: ['apply','destroy'])
   }
 
