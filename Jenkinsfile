@@ -15,7 +15,7 @@ pipeline {
         sh '''
           echo "this to get the task manager"
           top | head -10
-        '''
+        
       }
     }
     stage('memory'){
