@@ -10,12 +10,12 @@ pipeline {
         '''
       }
     }
-    stage('top'){
+    stage('date'){
       steps{
         sh '''
-          echo "this to get the task manager"
-          top | head -10
-        
+          echo "this to get the current date"
+          date
+        '''
       }
     }
     stage('memory'){
