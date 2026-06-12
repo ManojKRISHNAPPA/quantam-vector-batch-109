@@ -11,7 +11,7 @@ pipeline {
       steps{
         sh '''
           echo 'Env: ${params.ENV}'
-          echo 'action: ${params.ACTION}
+          echo 'action: ${params.ACTION}'
         '''
       }
     }
