@@ -1,0 +1,19 @@
+pipeline {
+  agent any 
+
+  parameters {
+    string(name: 'ENV',deafaultValue: 'Dev')
+    choice(name: 'ACTION',choices: ['apply','destroy'])
+  }
+
+  stages{
+    stage('Execute'){
+      steps{
+        sh '''
+          echo 'Env: ${params.ENV}'
+          echo 'action: ${params.ACTION}
+        '''
+      }
+    }
+  }
+}
