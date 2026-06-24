@@ -44,11 +44,20 @@ DOC_FOLDER = str(DOCS_PATH)
 
 st.sidebar.title("🔑 Configuration")
 
+
+
 if "openai_key" not in st.session_state:
     st.session_state.openai_key = ""
 
 st.session_state.openai_key = st.sidebar.text_input(
     "OpenAI API Key",
+    value=st.session_state.openai_key,
+    type="password",
+    help="Enter your OpenAI API Key"
+)
+
+st.session_state.openai_key = st.sidebar.text_input(
+    "groq API Key",
     value=st.session_state.openai_key,
     type="password",
     help="Enter your OpenAI API Key"
