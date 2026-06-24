@@ -21,5 +21,12 @@ pipeline{
                 '''
             }
         }
+        stage('CONTAINERTEST'){
+            steps{
+                sh '''
+                    docker run -it -d --name c1 -p 8501:8501 ${IMAGE_NAME}
+                '''
+            }
+        }
     }
 }
