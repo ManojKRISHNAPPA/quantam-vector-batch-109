@@ -1,0 +1,24 @@
+pipeline{
+
+    agent any
+
+    environment{
+        IMAGE_NAME = "manojkrishnappa/rag-image:${GIT_COMMIT}"
+    }
+    stages{
+        stage('GITCHECKOUT'){
+            steps{
+                git url: 'https://github.com/ManojKRISHNAPPA/quantam-vector-batch-109.git',
+                branch: 'production'
+            }
+        }
+        stage('DOCKERBUILD'){
+            steps{
+                sh '''
+                    printenv
+                    docker build -t ${IMAGE_NAME} .
+                '''
+            }
+        }
+    }
+}
