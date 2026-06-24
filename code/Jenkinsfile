@@ -30,5 +30,21 @@ pipeline{
                 '''
             }
         }
+        stage('LOGIN TO DOCKER HUB'){
+            steps{
+                withCredentials([usernamePassword(credentialsId: 'docker-creds', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
+                    sh '''
+                        sh "echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin"
+                    '''
+                }
+            }
+        }
+        stage('DOCKER PUSH'){
+            steps{
+                sh '''
+                    docker push ${IMAGE_NAME}
+                '''
+            }
+        }
     }
 }
